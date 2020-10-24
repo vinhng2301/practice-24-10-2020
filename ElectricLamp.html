@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    class Lamp {
+        constructor(name) {
+            this.name = name;
+            this.status = false;
+        }
+
+        turnOn() {
+            if (this.status) {
+                console.log("đang sáng rồi mà")
+            } else {
+                console.log("đèn đã được bật!");
+                this.status = true;
+            }
+        };
+
+        turnOff() {
+            if (this.status) {
+                console.log("đèn đã được tắt!");
+                this.status = false
+            } else {
+                console.log("đang sáng rồi mà")
+
+            }
+        };
+    }
+
+    class switcher {
+        constructor() {
+            this.lamp = {};
+
+
+        };
+
+        conectToLamp(obj) {
+            this.lamp = obj;
+            this.status = true;
+        }
+
+        getStatus() {
+            if (this.status) {
+                console.log(this.lamp.name);
+                console.log(this.lamp.status);
+            }
+        };
+
+        turnOff() {
+            if (this.status) {
+                this.lamp.turnOff();
+                this.getStatus();
+            }
+        };
+
+        turnOn() {
+            if (this.status) {
+                this.lamp.turnOn();
+                this.getStatus();
+            }
+        }
+    }
+
+
+    let sonySwitcher = new switcher();
+    let sonyLamp = new Lamp("h1102");
+    sonySwitcher.conectToLamp(sonyLamp);
+    sonySwitcher.turnOn();
+    sonySwitcher.turnOff();
+</script>
+
+</body>
+</html>
